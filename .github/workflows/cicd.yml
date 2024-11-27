@@ -54,6 +54,7 @@ jobs:
           dotnet nuget push packages/*.nupkg \
           --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json \
           --api-key ${{ secrets.NUGET_AUTH_TOKEN }}
+          --verbosity detailed
         env:
           NUGET_AUTH_TOKEN: ${{ secrets.NUGET_AUTH_TOKEN }}
           
