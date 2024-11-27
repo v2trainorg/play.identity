@@ -49,7 +49,7 @@ jobs:
           -p:RepositoryUrl=https://github.com/${{github.repository_owner}}/play.identity \
           -o packages
 
-      - name: Publish
+      - name: Publish        
         run: dotnet nuget push packages/*.nupkg --api-key ${{ secrets.NUGET_AUTH_TOKEN }}
         env:
           NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
