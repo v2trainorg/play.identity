@@ -31,14 +31,13 @@ jobs:
     needs: generate-version
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
-          source-url: https://nuget.pkg.github.com/v2trainorg/index.json
-      #source-url: https://nuget.pkg.github.com/${{github.repository_owner}}/index.json
+          source-url: https://nuget.pkg.github.com/v2trainorg/index.json  
         env:
           NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -53,9 +52,5 @@ jobs:
       - name: Publish
         run: |
           dotnet nuget push packages/*.nupkg 
-        #  --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json \
-        #  --api-key ${{ secrets.NUGET_AUTH_TOKEN }}
-        #  --verbosity detailed
-        #env:
-         # NUGET_AUTH_TOKEN: ${{ secrets.NUGET_AUTH_TOKEN }}
+
           
