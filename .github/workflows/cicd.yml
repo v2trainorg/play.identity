@@ -50,6 +50,6 @@ jobs:
           -o packages
 
       - name: Publish
-        run: dotnet nuget push packages/*.nupkg
+        run: dotnet nuget push packages/*.nupkg --api-key ${{ secrets.NUGET_AUTH_TOKEN }}
         env:
           NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
